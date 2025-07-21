@@ -1,0 +1,67 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Instancia Windows simples na AWS"
+
+Parameters:
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: "ID do VPC existente (ex: vpc-xxxxxxxx)"
+
+  SubnetId:
+    Type: AWS::EC2::Subnet::Id
+    Description: "ID da subnet pública existente (ex: subnet-xxxxxxxx)"
+
+  KeyPairName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: "Nome da chave .pem existente na conta AWS (ex: minha-chave.pem)"
+
+Resources:
+  WindowsSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: "Permitir RDP"
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3389
+          ToPort: 3389
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: WindowsSecurityGroup
+
+  WindowsInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t3.medium
+      ImageId: ami-0e1c2ef361fa4f389 
+      KeyName: !Ref KeyPairName
+      SubnetId: !Ref SubnetId
+      SecurityGroupIds:
+        - !Ref WindowsSecurityGroup
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: 50
+            VolumeType: gp3
+            DeleteOnTermination: true
+      Tags:
+        - Key: Name
+          Value: WindowsVM
+  
+  ElasticIp:
+    Type: AWS::EC2::EIP
+    Properties:
+      Domain: vpc
+      InstanceId: !Ref WindowsInstance
+      Tags:
+        - Key: Name
+          Value: WindowsElasticIP
+
+Outputs:
+  InstanceId:
+    Description: "ID da instância Windows criada"
+    Value: !Ref WindowsInstance
+  
+  InstancePublicIp:
+    Description: "Endereço IP público da instância Windows criada"
+    Value: !GetAtt WindowsInstance.PublicIp

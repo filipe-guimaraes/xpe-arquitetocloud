@@ -1,0 +1,6 @@
+# Ignora todos os diretórios .terraform em qualquer profundidade
+**/.terraform/
+
+# Ignora qualquer arquivo de lock do Terraform em qualquer lugar
+**/.terraform.lock.hcl
+
