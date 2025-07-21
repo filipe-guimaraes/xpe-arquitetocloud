@@ -1,30 +1,26 @@
 # Atividade Modular - Terraform com AWS na prática
 
+### Clone do repositório
+
+1. Esse é um repositório publico, portanto, vocês vão conseguir executar um git clone desse repositório em seu terminal normalmente, sme a necessidade de permissões adicionais!
+   a. Copie a URL HTTPS publica desse repositório:
+  
+  ![alt text](images/Screenshot 2025-07-21 165840.png)
+
+  b.No seu terminal local, execute o comando: `git clone https://github.com/filipe-guimaraes/xpe-arquitetocloud.git`
+
+  ![alt text](images/Screenshot 2025-07-21 165903.png)
+
+  c. Após isso, o repositório estará clonado em seu terminal local:
+
+  ![alt text](images/Screenshot 2025-07-21 165916.png)
+
 ### Processo de instalação do Terraform - v1.10.5
 
-Para instalar o terraform, execute o script install_teraform.sh contido nesse repositório, de acordo com os passos abaixo:
+Após clonar o projeto em seu terminal local, voc6e verá um script chamado ins tall_terraform.sh contido na raiz desse repositorio. Siga os passos abaixo para completar a instalação do terraform:
 
 - Atribuir permissão de execução para o script: chmod +x install_terraform.sh
 - Executar o script: ./install_terraform.sh
 - O resultado final do script deve ser como abaixo:
 
-![alt text](image.png)
-
-
-Para clonar o repositorio do github que contem o projeto, siga os passos abaixo:
-
-1. Gere uma chave no seu terminal com o comando:
-- `ssh-keygen -t ed25519 -C "seu-email@exemplo.com" -f ~/.ssh/nomedasuachave`
-2. Adicione a chave gerada ao ssh-agent:
-- `eval "$(ssh-agent -s)"`
-- `ssh-add ~/.ssh/nomedasuachave`
-
-3. Agora você precisa adicionar o conteudo da chave publica no seu github para conseguir clonar o repositorio
-
-![alt text](image-1.png)
-
-4. Após isso, basta executar o seguinte comando em seu terminal:
-
-- `git clone git@github.com:filipe-guimaraes/atividademodular-xpe.git` #Substitua aqui pelo endereço do seu repositório
-
-5. Após isso o repositório está clonado no seu terminal e você pode acessar o diretório para iniciar a prática
+![alt text](images/image.png)
