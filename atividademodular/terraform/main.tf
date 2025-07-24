@@ -14,7 +14,7 @@ module "compute" {
   private_subnet_ids = module.network.private_subnet_ids
   ami_id             = var.ami_id
   instance_type      = var.instance_type
-  depends_on = [ module.network ]
+  depends_on         = [module.network]
 }
 
 module "loadbalancer" {
@@ -24,5 +24,5 @@ module "loadbalancer" {
   public_subnet_ids = module.network.public_subnet_ids
   instance_ids      = module.compute.instance_ids
   security_group_id = module.compute.security_group_id
-  depends_on = [ module.network, module.compute ]
+  depends_on        = [module.network, module.compute]
 }

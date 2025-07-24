@@ -16,6 +16,13 @@ resource "google_compute_subnetwork" "subnet" {
   network       = google_compute_network.vpc.id
 }
 
+resource "google_compute_subnetwork" "subnet_2" {
+  name          = "windows-subnet-2"
+  ip_cidr_range = "10.0.1.0/24"
+  region        = "us-central1"
+  network       = google_compute_network.vpc.id
+}
+
 resource "google_compute_firewall" "allow_rdp" {
   name    = "allow-rdp"
   network = google_compute_network.vpc.name
