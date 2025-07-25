@@ -46,12 +46,6 @@
             "properties": {
               "addressPrefix": "10.0.0.0/24"
             }
-          },
-          {
-            "name": "linuxSubnet",
-            "properties": {
-              "addressPrefix": "10.0.1.0/24"
-            }
           }
         ]
       }
@@ -73,19 +67,6 @@
               "destinationAddressPrefix": "*",
               "access": "Allow",
               "priority": 1000,
-              "direction": "Inbound"
-            }
-          },
-          {
-            "name": "AllowSSH",
-            "properties": {
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "22",
-              "sourceAddressPrefix": "*",
-              "destinationAddressPrefix": "*",
-              "access": "Allow",
-              "priority": 1010,
               "direction": "Inbound"
             }
           }
@@ -157,15 +138,5 @@
         }
       }
     }
-  ],
-  "outputs": {
-    "publicIpAddress": {
-      "type": "string",
-      "value": "[reference('windowsPublicIP').ipAddress]"
-    },
-    "vmName": {
-      "type": "string",
-      "value": "[parameters('vmName')]"
-    }
-  }
+  ]
 }
